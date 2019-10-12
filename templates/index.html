@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>簡易受付システム</title>
+        <meta charset="utf-8">
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/sty.css">
+        <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap&subset=japanese" rel="stylesheet">
+        </head>
+
+    <body>
+        <h1>
+            大工大 模擬学会出欠記録
+        </h1>
+
+
+        {% if attendees%}
+            <table align="center">
+            {% for attende in attendees.keys() %}
+                    <tr>
+                        <th>{{ attende }}</th>
+                        <td>{{ attendees[attende] }}</td>
+                        <td></td>
+                    </tr>
+            {% endfor %}
+            </table>
+        {% endif %}
+
+        <form action="/add_list" method="POST">
+            <p>
+                Name:<input type="text" name="name" size="20">
+                <input type="radio" name="exit" value="○">○
+                <input type="radio" name="exit" value="×">×
+                <input type="submit" name="submit" value="追加">
+            </p>
+        </form>
+
+        <form action="delete_list" method="POST">
+            <p>
+                <select name="name">
+                    {% if attendees%}
+                        {% for attende in attendees.keys() %}
+                            <option value={{ attende }}> {{attende}} </option>
+                        {% endfor %}
+                    {% endif %}  
+                </select>
+                <input type="submit" name="delete_name" value="削除">
+            </p>
+        </form>
+    </body>
+</html>

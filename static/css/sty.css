@@ -1,0 +1,22 @@
+h1 {
+    text-decoration: underline;
+}
+
+body {
+    text-align: center;
+    font-family: 'Kosugi Maru', sans-serif;
+    color: aliceblue;
+
+    background-image: url("images/wall_paper.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+table td,
+table th{
+    text-decoration:underline;
+    padding:10px;
+  }
+  
